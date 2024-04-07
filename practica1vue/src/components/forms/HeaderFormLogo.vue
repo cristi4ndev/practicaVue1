@@ -1,11 +1,14 @@
 <template>
-    <div>
-        <i class="header-form-logo fa-solid fa-user"></i>
+    <div class="header-form-logo">
+        <i :class="props.icon"  ></i>
     </div>
 </template>
 
 <script lang="ts" setup>
-
+import { defineProps } from 'vue'
+const props = defineProps({
+    icon: String
+})
 </script>
 
 <style scoped>
@@ -15,7 +18,7 @@
    
     border-radius: 10px;
     padding: 10px;
-    background-color: var();
+    
     box-shadow: 0px 0px 10px 0px var(--light-primary-color);
         
 }

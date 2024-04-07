@@ -1,6 +1,14 @@
 <template>
-    <div>
-        
+    <div class="social-login">
+        <div>
+            <i class="fa-brands fa-facebook"></i>
+        </div>
+        <div>
+            <i class="fa-brands fa-google"></i>
+        </div>
+        <div>
+            <i class="fa-brands fa-instagram"></i>
+        </div>
     </div>
 </template>
 
@@ -9,8 +17,7 @@
 </script>
 
 <style scoped>
-
-.social-login{
+.social-login {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -20,7 +27,8 @@
     font-size: 30px;
     transition: color 0.5s;
 }
-.social-login div:hover{
+
+.social-login div:hover {
     color: var(--primary-color);
     cursor: pointer;
 }

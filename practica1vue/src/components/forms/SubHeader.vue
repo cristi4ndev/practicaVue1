@@ -1,16 +1,20 @@
 <template>
     <div class="subheader-form">
         <div>
-            <i class="fa-solid fa-lock"></i>
+            <i :class="props.icon"></i>
         </div>
         <div>
-            login
+            {{ props.text }}
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-
+import { defineProps } from 'vue'
+const props = defineProps({
+    icon: String,
+    text: String
+})
 </script>
 
 <style scoped>

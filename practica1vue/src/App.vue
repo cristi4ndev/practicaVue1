@@ -1,8 +1,11 @@
 <template>
   <nav>
+    <router-link :to="{name:'home'}">Not protected View</router-link> |
+    <router-link :to="{name:'protected-url'}">Protected View</router-link> |
     <router-link :to="{name:'login'}">Login</router-link> |
     <router-link :to="{name:'register'}">Register</router-link> |
     <router-link :to="{name:'password-recovery'}">Password Recovery</router-link>
+    
   </nav>
   <div class="container">
     <router-view/>
@@ -35,10 +38,10 @@ nav a.router-link-exact-active {
 
 /**************General**************/
 :root {
-    --dark-primary-color: #512DA8;
-    --light-primary-color: #d1c4e9;
-    --primary-color: #673AB7;
-    --accent-color: #607D8B;
+    --dark-primary-color: #E64A19;
+    --light-primary-color: #FFCCBC;
+    --primary-color: #FF5722;
+    --accent-color: #FF5722;
     --primary-text: #212121;
     --secondary-text: #757575;
     --divider-color: #BDBDBD;
@@ -70,7 +73,7 @@ a:hover{
     color: var(--dark-primary-color);
 }
 .container {
-    background: linear-gradient(0.03turn, var(--light-primary-color), var(--accent-color), var(--primary-color));
+    background: linear-gradient(0.25turn, var(--primary-color), var(--light-primary-color), var(--primary-color));
     width: 100%;
     height: 100%;
     display: flex;
@@ -82,7 +85,7 @@ a:hover{
 }
 .accent-text{
     font-weight: 900;
-    color: var(--primary-color);
+    color: var(--primary-color) !important;
     transition: text-decoration 2s;
    
 }
