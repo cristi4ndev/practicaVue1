@@ -9,13 +9,11 @@
             <InputTextFormGroup label='password' name="password" type="password" @returnValue="getValues" />
             <InputTextFormGroup label='Vuelve a introducir la contraseña' name="password2" type="password" @returnValue="getValues" />
             <template v-if="password.value != password2.value">
+                <LittleInfo text="Las contraseñas no coinciden" />
                 <SubmitFormButton disabled value="Registrarme" class="disabled"/>
-                <p v-show="password.value != password2.value">Las contraseñas no coinciden</p>
-                <LittleInfo text="Registrate con:" />
             </template>
             <template v-else>
-                <SubmitFormButton value="Registrarme" />
-                
+                <SubmitFormButton value="Registrarme" />                
             </template>
             
         </PostForm>
@@ -80,7 +78,7 @@ function getValues(input: any) {
     array = [user, password.value, name, surname]
 
     registerRequest.user = array[0]
-    registerRequest.password = array[1]
+    registerRequest.password = array[1].value
     registerRequest.name = array[2]
     registerRequest.surname = array[3]
     console.log(registerRequest)
