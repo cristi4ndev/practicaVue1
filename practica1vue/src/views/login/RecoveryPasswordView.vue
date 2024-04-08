@@ -53,9 +53,10 @@ function getValues(input: any) {
     }
     array = [email]
     
-    recoveryRequest.email =array[0]
+    recoveryRequest.email =array[0].value
    
     console.log(recoveryRequest)
+    
 
 }
 const recoveryPetition = () => {
