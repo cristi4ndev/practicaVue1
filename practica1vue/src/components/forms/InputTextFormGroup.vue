@@ -2,7 +2,7 @@
     <div class="form-group">
         <label :for="props.name">{{ props.label }}</label>
         <input :id="props.name" :name="props.name" :type="props.type" v-model="text" >
-        
+       
     </div>
 </template>
 
@@ -32,7 +32,7 @@ onUpdated(()=>{
     
     emit("returnValue", {
         name: props.name,
-        value: text.value
+        value: text
     })
 
 

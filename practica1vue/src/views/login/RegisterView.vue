@@ -2,15 +2,22 @@
     <div id="login-form-container">
         <HeaderFormLogo icon="fa-solid fa-id-card" />
         <SubHeader icon="fa-solid fa-user-plus" text="new user" />
-        <PostForm>
+        <PostForm @submit.prevent="registerPetition">
             <InputTextFormGroup label='name' name="name" type="text" @returnValue="getValues" />
             <InputTextFormGroup label='surname' name="surname" type="text" @returnValue="getValues" />
             <InputTextFormGroup label='email' name="user" type="email" @returnValue="getValues" />
             <InputTextFormGroup label='password' name="password" type="password" @returnValue="getValues" />
-            <InputTextFormGroup label='Vuelve a introducir la contraseña' name="password2" type="password"
-                @returnValue="getValues" />
-                <p v-show="password !== password2">Las contraseñas no coinciden</p>
-            <SubmitFormButton value="Registrarme" />
+            <InputTextFormGroup label='Vuelve a introducir la contraseña' name="password2" type="password" @returnValue="getValues" />
+            <template v-if="password.value != password2.value">
+                <SubmitFormButton disabled value="Registrarme" class="disabled"/>
+                <p v-show="password.value != password2.value">Las contraseñas no coinciden</p>
+                <LittleInfo text="Registrate con:" />
+            </template>
+            <template v-else>
+                <SubmitFormButton value="Registrarme" />
+                
+            </template>
+            
         </PostForm>
 
         <LittleInfo text="Registrate con:" />
@@ -24,7 +31,7 @@
 
         </div>
     </div>
-    
+
 </template>
 
 <script lang="ts" setup>
@@ -36,9 +43,9 @@ import SocialLogin from '@/components/forms/SocialLogin.vue';
 import SubHeader from '@/components/forms/SubHeader.vue';
 import SubmitFormButton from '@/components/forms/SubmitFormButton.vue';
 import { IRegisterRequest } from '@/interfaces/auth';
-import { ref } from 'vue';
+import { ref, Ref } from 'vue';
 
-let array: Array<string> = Array(4)
+let array: Array<any> = Array(4)
 let registerRequest: IRegisterRequest = {
     user: '',
     password: '',
@@ -46,8 +53,8 @@ let registerRequest: IRegisterRequest = {
     surname: ''
 }
 let user = ''
-let password = ''
-let password2 = ''
+let password: Ref = ref('')
+let password2: Ref = ref('')
 let name = ''
 let surname = ''
 function getValues(input: any) {
@@ -58,10 +65,10 @@ function getValues(input: any) {
             user = input.value
         }
         if (input.name == "password") {
-            password = input.value
+            password.value = input.value
         }
         if (input.name == "password2") {
-            password2 = input.value
+            password2.value = input.value
         }
         if (input.name == "name") {
             name = input.value
@@ -70,7 +77,7 @@ function getValues(input: any) {
             surname = input.value
         }
     }
-    array = [user, password, name, surname]
+    array = [user, password.value, name, surname]
 
     registerRequest.user = array[0]
     registerRequest.password = array[1]
@@ -79,8 +86,8 @@ function getValues(input: any) {
     console.log(registerRequest)
 
 }
-const sendAuth = () => {
-    console.log("petición de acceso", registerRequest)
+const registerPetition = () => {
+    console.log("Petición de registro", registerRequest)
 }
 
 

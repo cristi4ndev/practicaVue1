@@ -1,5 +1,5 @@
 <template>
-    <input class="submit-button" type="submit" :value="props.value">
+    <button class="submit-button" type="submit" >{{ props.value }}</button>
 </template>
 
 <script lang="ts" setup>
@@ -24,5 +24,12 @@ const props = defineProps({
         background-color: var(--dark-primary-color);
     }
 
+}
+.disabled {
+  background-color: #8080801a;
+  cursor: default;
+  &:hover {
+    background-color: #8080801a
+    }
 }
 </style>

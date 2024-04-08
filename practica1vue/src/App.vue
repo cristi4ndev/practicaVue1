@@ -83,6 +83,11 @@ a:hover {
   color: var(--dark-primary-color);
 }
 
+.disabled {
+  background-color: #8080801a;
+  cursor: none;
+}
+
 .container {
   background: linear-gradient(0.25turn, var(--primary-color), var(--light-primary-color), var(--primary-color));
   width: 100%;
