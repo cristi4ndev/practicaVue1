@@ -80,4 +80,13 @@ const sendAuth = () => {
 
 
 }
+/**************Media Queries**************/
+@media screen and (max-width: 600px) {
+    
+   
+    #login-form-container {
+      width: 100%;
+      box-shadow:0px 0px 0px 0px;
+    }
+  }
 </style>

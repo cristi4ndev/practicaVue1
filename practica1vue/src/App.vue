@@ -1,16 +1,15 @@
 <template>
   <nav>
-    <router-link :to="{name:'home'}">Not protected View</router-link> |
-    <router-link :to="{name:'protected-url'}">Protected View</router-link> |
-    <router-link :to="{name:'login'}">Login</router-link> |
-    <router-link :to="{name:'register'}">Register</router-link> |
-    <router-link :to="{name:'password-recovery'}">Password Recovery</router-link>
-    
+    <router-link :to="{ name: 'home' }">Not protected View</router-link> |
+    <router-link :to="{ name: 'protected-url' }">Protected View</router-link> |
+    <router-link :to="{ name: 'login' }">Login</router-link> |
+    <router-link :to="{ name: 'register' }">Register</router-link> |
+    <router-link :to="{ name: 'password-recovery' }">Password Recovery</router-link>
+
   </nav>
   <div class="container">
-    <router-view/>
+    <router-view />
   </div>
-  
 </template>
 
 <style>
@@ -24,7 +23,7 @@
 
 nav {
   padding: 30px;
-  height: 5vh;
+
 }
 
 nav a {
@@ -38,75 +37,79 @@ nav a.router-link-exact-active {
 
 /**************General**************/
 :root {
-    --dark-primary-color: #E64A19;
-    --light-primary-color: #FFCCBC;
-    --primary-color: #FF5722;
-    --accent-color: #FF5722;
-    --primary-text: #212121;
-    --secondary-text: #757575;
-    --divider-color: #BDBDBD;
+  --dark-primary-color: #E64A19;
+  --light-primary-color: #FFCCBC;
+  --primary-color: #FF5722;
+  --accent-color: #FF5722;
+  --primary-text: #212121;
+  --secondary-text: #757575;
+  --divider-color: #BDBDBD;
 }
 
 * {
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 #app {
-    height: 95vh;
-    width: 100%;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: 2px;
-    accent-color: var(--accent-color);
+
+  width: 100%;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
+  accent-color: var(--accent-color);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-a{
-    text-decoration: none;
-    transition: color 0.5s;
-    &:hover{
-        color: var(--dark-primary-color);
-    }
-}
-a:hover{
+a {
+  text-decoration: none;
+  transition: color 0.5s;
+
+  &:hover {
     color: var(--dark-primary-color);
-}
-.container {
-    background: linear-gradient(0.25turn, var(--primary-color), var(--light-primary-color), var(--primary-color));
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    
-}
-.accent-text{
-    font-weight: 900;
-    color: var(--primary-color) !important;
-    transition: text-decoration 2s;
-   
-}
-
-.accent-text:hover{
-    text-decoration: underline;
-}
-
-.flex-col{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-/**************Media Queries**************/
-@media screen and (max-width: 600px) {
-    /* Estilos específicos para tabletas */
-   
-    #login-form-container {
-      width: 100%;
-      box-shadow:0px 0px 0px 0px;
-    }
   }
-</style>
+}
+
+a:hover {
+  color: var(--dark-primary-color);
+}
+
+.container {
+  background: linear-gradient(0.25turn, var(--primary-color), var(--light-primary-color), var(--primary-color));
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+
+
+}
+
+.accent-text {
+  font-weight: 900;
+  color: var(--primary-color) !important;
+  transition: text-decoration 2s;
+
+}
+
+.accent-text:hover {
+  text-decoration: underline;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}</style>

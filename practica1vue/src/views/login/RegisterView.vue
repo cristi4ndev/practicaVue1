@@ -1,28 +1,30 @@
 <template>
     <div id="login-form-container">
-        <HeaderFormLogo icon="fa-solid fa-id-card"/>
-        <SubHeader icon="fa-solid fa-user-plus" text="new user"/>
+        <HeaderFormLogo icon="fa-solid fa-id-card" />
+        <SubHeader icon="fa-solid fa-user-plus" text="new user" />
         <PostForm>
             <InputTextFormGroup label='name' name="name" type="text" @returnValue="getValues" />
             <InputTextFormGroup label='surname' name="surname" type="text" @returnValue="getValues" />
             <InputTextFormGroup label='email' name="user" type="email" @returnValue="getValues" />
             <InputTextFormGroup label='password' name="password" type="password" @returnValue="getValues" />
-            <InputTextFormGroup label='Vuelve a introducir la contraseña' name="password2" type="password" @returnValue="getValues" />
-        
+            <InputTextFormGroup label='Vuelve a introducir la contraseña' name="password2" type="password"
+                @returnValue="getValues" />
+                <p v-show="password !== password2">Las contraseñas no coinciden</p>
             <SubmitFormButton value="Registrarme" />
         </PostForm>
-        
-            <LittleInfo text="Registrate con:"/>
-              
+
+        <LittleInfo text="Registrate con:" />
+
         <SocialLogin />
         <div class="flex-col">
-            <LittleInfo text="¿Ya tienes cuenta?"/>
-            <router-link :to="{name:'login'}">
-                <LittleInfo accent="true" text="Accede al login"/>
+            <LittleInfo text="¿Ya tienes cuenta?" />
+            <router-link :to="{ name: 'login' }">
+                <LittleInfo accent="true" text="Accede al login" />
             </router-link>
-            
+
+        </div>
     </div>
-    </div>
+    
 </template>
 
 <script lang="ts" setup>
@@ -34,16 +36,18 @@ import SocialLogin from '@/components/forms/SocialLogin.vue';
 import SubHeader from '@/components/forms/SubHeader.vue';
 import SubmitFormButton from '@/components/forms/SubmitFormButton.vue';
 import { IRegisterRequest } from '@/interfaces/auth';
+import { ref } from 'vue';
 
 let array: Array<string> = Array(4)
-let registerRequest:IRegisterRequest = {
+let registerRequest: IRegisterRequest = {
     user: '',
     password: '',
-    name: '', 
+    name: '',
     surname: ''
 }
 let user = ''
 let password = ''
+let password2 = ''
 let name = ''
 let surname = ''
 function getValues(input: any) {
@@ -56,6 +60,9 @@ function getValues(input: any) {
         if (input.name == "password") {
             password = input.value
         }
+        if (input.name == "password2") {
+            password2 = input.value
+        }
         if (input.name == "name") {
             name = input.value
         }
@@ -63,10 +70,12 @@ function getValues(input: any) {
             surname = input.value
         }
     }
-    array = [user, password]
-    
-    registerRequest.user =array[0]
-    registerRequest.password =array[1]
+    array = [user, password, name, surname]
+
+    registerRequest.user = array[0]
+    registerRequest.password = array[1]
+    registerRequest.name = array[2]
+    registerRequest.surname = array[3]
     console.log(registerRequest)
 
 }
@@ -79,7 +88,7 @@ const sendAuth = () => {
 
 
 <style scoped>
-#login-form-container{
+#login-form-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -91,5 +100,15 @@ const sendAuth = () => {
     width: 500px;
 
 
+}
+
+/**************Media Queries**************/
+@media screen and (max-width: 600px) {
+
+
+    #login-form-container {
+        width: 100%;
+        box-shadow: 0px 0px 0px 0px;
+    }
 }
 </style>
