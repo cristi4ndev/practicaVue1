@@ -10,3 +10,7 @@ export interface IRegisterRequest{
     surname: String
 
 }
+export interface IRecoveryRequest{
+    email: String,
+    
+}

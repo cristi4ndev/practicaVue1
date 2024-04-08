@@ -1,6 +1,6 @@
 <template>
     <div id="login-form-container">
-        <HeaderFormLogo icon="fa-solid fa-id-card" />
+        <HeaderFormLogo cicon="fa-solid fa-id-card" />
         <SubHeader icon="fa-solid fa-user-plus" text="new user" />
         <PostForm @submit.prevent="registerPetition">
             <InputTextFormGroup label='name' name="name" type="text" @returnValue="getValues" />
